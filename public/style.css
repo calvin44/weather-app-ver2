@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
+.center-item {
+  display: flex;
+  justify-content: center;
+}
+
+.App {
+  font-family: "Ubuntu", sans-serif;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-bottom: 100px;
+  padding-top: 100px;
+  max-width: 1000px;
+}
+
+.weather-card {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.weather-body {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.weather-img {
+  width: 4rem;
+  height: 4rem;
+}
