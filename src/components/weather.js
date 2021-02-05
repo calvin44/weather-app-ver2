@@ -44,6 +44,13 @@ function Weather(props) {
       });
   }, [url]);
 
+  function getDay() {
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let d = new Date();
+    let dayName = days[d.getDay()];
+    return dayName;
+  }
+
   function capitalize(a) {
     return a.charAt(0).toUpperCase() + a.slice(1);
   }
@@ -63,9 +70,20 @@ function Weather(props) {
 
       <div className="container py-3 px- 2 temp-container">
         <div className="row container-fluid mx-auto px-0 py-0">
-          <div className="col  ps-0 current-temp-container">
-            <span className="current-temp">{convertCelcius(temp.current)}</span>
-            <span className="ps-1 mt-3 fs-5">°C</span>
+          <div className="col  ps-0 ">
+            <div className="row">
+              <div className="col current-temp-container">
+                <span className="current-temp ">
+                  {convertCelcius(temp.current)}
+                </span>
+                <span className="ps-1 mt-3 fs-5">°C</span>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col">
+                <p className="text-start ps-1 fw-bold fs-4">{getDay()}</p>
+              </div>
+            </div>
           </div>
           <div className="col px-0 weather-description">
             <span className="me-2 fs-4">{main}</span>
