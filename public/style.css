@@ -28,6 +28,44 @@
 }
 
 .weather-img {
-  width: 4rem;
-  height: 4rem;
+  width: 6rem;
+  height: 6rem;
+}
+
+.temp-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.current-temp {
+  font-size: 3rem;
+}
+
+.current-temp-container {
+  display: flex;
+}
+
+.weather-description {
+  display: flex;
+  align-items: center;
+  text-align: right;
+}
+
+.details-heading {
+  /* background-color: grey; */
+  display: flex;
+  justify-content: flex-start;
+}
+
+.border {
+  border: border solid grey 1px;
+}
+
+.details-text {
+  font-size: 0.8rem;
+}
+
+.details-data {
+  /* display: flex; */
+  justify-content: flex-start;
 }
