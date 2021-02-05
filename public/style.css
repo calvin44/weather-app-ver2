@@ -48,7 +48,7 @@
 .weather-description {
   display: flex;
   align-items: center;
-  text-align: right;
+  justify-content: flex-start;
 }
 
 .details-heading {

@@ -45,11 +45,7 @@ function Weather(props) {
   }, [url]);
 
   function capitalize(a) {
-    let word = a.split(" ");
-    for (let i = 0; i < word.length; i++) {
-      word[i] = word[i][0].toUpperCase() + word[i].slice(1);
-    }
-    return word.join(" ");
+    return a.charAt(0).toUpperCase() + a.slice(1);
   }
 
   function convertCelcius(f) {
@@ -69,10 +65,10 @@ function Weather(props) {
         <div className="row container-fluid mx-auto px-0 py-0">
           <div className="col  ps-0 current-temp-container">
             <span className="current-temp">{convertCelcius(temp.current)}</span>
-            <span className="ps-1 mt-3">°C</span>
+            <span className="ps-1 mt-3 fs-5">°C</span>
           </div>
-          <div className="col ps-2  weather-description">
-            <span>{main}</span>
+          <div className="col px-0 weather-description">
+            <span className="me-2 fs-4">{main}</span>
           </div>
         </div>
       </div>
@@ -80,7 +76,7 @@ function Weather(props) {
       <div className="container-fluid mx-0">
         <div className="row">
           <div className="col px-0 details-heading">
-            <span className="ms-2 my-2">Weather Details</span>
+            <span className="ms-2 my-2 fw-bold fs-5">Weather Details</span>
           </div>
         </div>
         <div className="row px-2 my-3">
@@ -111,7 +107,7 @@ function Weather(props) {
             <p className="my-0 mt-2 text-start  details-text">Humidity</p>
           </div>
           <div className="col-6 px-0 details-data">
-            <p className="my-0 text-start">{desc}</p>
+            <p className="my-0 text-start">{capitalize(desc)}</p>
             <p className="my-0 mt-2 text-start  details-text">Description</p>
           </div>
         </div>

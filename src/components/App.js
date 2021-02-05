@@ -34,7 +34,7 @@ function App() {
               onChange={handleInput}
               type="text"
               className="form-control  text-center"
-              placeholder="Username"
+              placeholder="Enter City Name"
               value={userInput}
             />
           </form>
