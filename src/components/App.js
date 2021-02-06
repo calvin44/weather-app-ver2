@@ -25,20 +25,23 @@ function App() {
   return (
     <div className="App text-center container-fluid">
       <div className="mx-auto">
-        <div className="heading">
-          <h1>Weather App</h1>
+        <div className="container-fluid px-0 pb-2 mb-4">
+          <div className="heading">
+            <h1>Weather App</h1>
+          </div>
+          <div className="input-group center-item mb-4">
+            <form onSubmit={generateWeather}>
+              <input
+                onChange={handleInput}
+                type="text"
+                className="form-control  text-center"
+                placeholder="Enter City Name"
+                value={userInput}
+              />
+            </form>
+          </div>
         </div>
-        <div className="input-group center-item   mb-3">
-          <form onSubmit={generateWeather}>
-            <input
-              onChange={handleInput}
-              type="text"
-              className="form-control  text-center"
-              placeholder="Enter City Name"
-              value={userInput}
-            />
-          </form>
-        </div>
+
         <div className="weather-card">
           {weatherData.map((city, index) => {
             return <Weather city={city} key={index} />;
