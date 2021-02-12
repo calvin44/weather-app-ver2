@@ -1,55 +1,90 @@
-import React, { useState } from "react";
-import Weather from "./weather";
+import React, { useState, useEffect } from "react";
+import WeatherCard from "./weather-card";
+import { myContext } from "./state";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
-function App() {
+export default function App() {
+  // state hook to store user input
   const [userInput, setUserInput] = useState("");
-  const [weatherData, setweatherData] = useState(["london"]);
-  // const [error, setError] = useState(false);
+  const [cityList, setCityList] = useState([]);
 
-  function handleInput(e) {
+  useEffect(() => {
+    // query city data from database
+    axios
+      .get("http://localhost:1000/")
+      .then((res) => {
+        console.log(res.data);
+        res.data.forEach((e) => {
+          setCityList((prev) => [...prev, e.city]);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const redirectLink = (city) => {
+    return `/weather/${city}`;
+  };
+
+  const print = (a) => {
+    console.log("print something" + a);
+  };
+
+  const mapInput = (e) => {
     setUserInput(e.target.value);
-  }
+  };
 
-  function generateWeather(e) {
-    e.preventDefault();
-    setweatherData((prev) => [...prev, userInput]);
+  const addCity = (event) => {
+    // prevent form from submitting
+    event.preventDefault();
+    console.log(userInput);
+
+    // push data
+    axios({
+      method: "post",
+      url: "http://localhost:1000/push/",
+      data: {
+        City: userInput,
+      },
+    });
+
+    // reload page start fetching
+    window.location.reload();
+
+    // clear user input automaticcally
     setUserInput("");
-    console.log(weatherData);
-  }
 
-  // function handleError() {
-  //   setError(true);
-  //   console.log(error);
-  // }
+    console.log(cityList);
+  };
 
   return (
-    <div className="App text-center container-fluid">
-      <div className="mx-auto">
-        <div className="container-fluid px-0 pb-2 mb-4">
-          <div className="heading">
-            <h1>Weather App</h1>
-          </div>
-          <div className="input-group center-item mb-4">
-            <form onSubmit={generateWeather}>
-              <input
-                onChange={handleInput}
-                type="text"
-                className="form-control  text-center"
-                placeholder="Enter City Name"
-                value={userInput}
-              />
-            </form>
-          </div>
+    <div className="container-fluid app-container">
+      <div className="container text-center">
+        <h1>App</h1>
+        {/* <h2>{cityList}</h2> */}
+        <div className="input-group center-item">
+          <form onSubmit={addCity}>
+            <input
+              onChange={mapInput}
+              type="text"
+              className="form-control text-center"
+              placeholder="Username"
+              value={userInput}
+            />
+          </form>
         </div>
-
-        <div className="weather-card">
-          {weatherData.map((city, index) => {
-            return <Weather city={city} key={index} />;
-          })}
-        </div>
+        <myContext.Provider value={{ print }}>
+          <div className="city-list">
+            {cityList.map((item, index) => (
+              <Link className="disable-link" to={redirectLink(item)}>
+                <WeatherCard city={item} key={index} />
+              </Link>
+            ))}
+          </div>
+        </myContext.Provider>
       </div>
     </div>
   );
 }
-
-export default App;

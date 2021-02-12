@@ -5,6 +5,17 @@
   justify-content: center;
 }
 
+.current-weather-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.center-vertical {
+  display: flex;
+  align-items: center;
+}
+
 .App {
   font-family: "Ubuntu", sans-serif;
   display: flex;
@@ -15,57 +26,41 @@
   max-width: 1000px;
 }
 
-.weather-card {
+.app-container {
   display: flex;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+
+  /* view-point height */
+  height: 100vh;
 }
 
-.weather-body {
-  padding: 0;
+.weather-card {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  width: 60%;
+  border-radius: 6px;
+  text-align: left;
+}
+
+.weather-card-city {
+  font-size: 60%;
+}
+
+.weather-card-description {
+  font-size: 60%;
 }
 
 .weather-img {
-  width: 6rem;
-  height: 6rem;
+  width: 50%;
+  height: 50%;
 }
 
-.temp-info {
-  display: flex;
-  justify-content: space-between;
+.disable-link {
+  text-decoration: none;
+  color: black;
 }
 
-.current-temp {
-  font-size: 3rem;
-}
-
-.current-temp-container {
-  display: flex;
-}
-
-.weather-description {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.details-heading {
-  /* background-color: grey; */
-  display: flex;
-  justify-content: flex-start;
-}
-
-.border {
-  border: border solid grey 1px;
-}
-
-.details-text {
-  font-size: 0.8rem;
-}
-
-.details-data {
-  /* display: flex; */
-  justify-content: flex-start;
+.disable-link :hover {
+  color: black;
 }
