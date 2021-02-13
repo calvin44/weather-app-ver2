@@ -62,7 +62,7 @@ export default function App() {
   return (
     <div className="container-fluid app-container">
       <div className="container text-center">
-        <h1>App</h1>
+        <h1 className="app-name my-4">Weather App</h1>
         {/* <h2>{cityList}</h2> */}
         <div className="input-group center-item">
           <form onSubmit={addCity}>

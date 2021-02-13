@@ -65,7 +65,7 @@ function Weather({ match }) {
   };
 
   return (
-    <div className="card mx-auto weather-body mb-4" style={{ width: "18rem" }}>
+    <div className="card mx-auto weather-body mb-4 " style={{ width: "18rem" }}>
       <h3 className="card-title mb-0 mx-auto py-2 my-3">
         {capitalize(match.params.city)}
       </h3>
